@@ -1,8 +1,8 @@
 const Tour=require("../models/movieModel");
 
 exports.getAllMovies=async (req,res)=>{
-    console.log(req.query)
-    console.log(req.query.sort)
+    //console.log(req.query)
+    //console.log(req.query.sort)
     try{
     
     //Shallow copying to exclude     

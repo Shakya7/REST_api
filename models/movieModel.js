@@ -45,9 +45,9 @@ movieSchema.post("save",function(doc,next){
 
 //PRE,POST "QUERY" MIDDLEWARE
 movieSchema.pre(/^find/,function(next){
-    console.log(this);
-    this.find({rating:{$gte:3.7}});
-    this.sort("-rating");
+    //console.log(this);
+    //this.find({rating:{$gte:3.7}});
+    //this.sort("-rating");
     next();
 })
 

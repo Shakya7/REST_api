@@ -2,6 +2,8 @@ const dotenv=require("dotenv");
 const express=require("express");
 const app=express();
 const movieRouter=require("./routes/movieRoutes");
+const userRouter=require("./routes/userRoutes");
+const rateLimit=require("express-rate-limit");
 
 dotenv.config({path:"./config.env"});
 
@@ -20,7 +22,17 @@ app.use((req,res,next)=>{                             //-----> M2
     })
 })*/
 
+const rateLimiter=rateLimit({
+    max:100,
+    windowMs:60*60*1000,
+    message:"Too many requests from this IP"
+});
+app.use("/api",rateLimiter);
+
+
 app.use("/api/v1/movies",movieRouter);
+app.use("/api/v1/users",userRouter);
+
 
 
 module.exports=app;
