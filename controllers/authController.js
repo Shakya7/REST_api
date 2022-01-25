@@ -40,7 +40,7 @@ exports.login=async (req,res)=>{
     if(!user)
         throw "Please enter a valid email";
     const correct=await user.compareNormalPwithHashedP(password,user.password);
-    console.log(correct)
+    //console.log(correct)
     if(!correct) 
         throw "Please provide valid password";   
     const token= jwt.sign({id:user._id,name:user.name},process.env.SECRET,{expiresIn:process.env.JWT_EXPIRES}); 
@@ -67,6 +67,8 @@ exports.protect=async(req,res,next)=>{
     let token;
     if(req.headers.authorization && req.headers.authorization.startsWith("Bearer"))
         token=req.headers.authorization.split(" ")[1];
+    else if(req.cookies.jwt)   
+        token=req.cookies.jwt;
     //If token is there at all
     console.log(token);    
     if(!token)

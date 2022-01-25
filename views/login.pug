@@ -1,0 +1,15 @@
+extends overview
+
+block main
+    form.form_card
+        label Enter your email 
+        input#email_ip(type="email" placeholder="abc@xyz.com") 
+        br
+        label Enter your password 
+        input#password_ip(type="password" placeholder="*******")
+        br
+        button#submit(type="submit") Submit
+
+block append script 
+    script(src="/js/login.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.js")

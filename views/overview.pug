@@ -1,0 +1,37 @@
+
+
+doctype html
+html(lang="en")
+    head
+        block head
+            meta(charset="UTF-8")
+            meta(http-equiv="X-UA-Compatible", content="IE=edge")
+            meta(name="viewport", content="width=device-width, initial-scale=1.0")
+            title #{title}
+            link(href="/css/index.css" rel="stylesheet")
+            link(href="/images/favicon.png" rel="shortcut icon" type="image/png")
+
+    body 
+        header.main_header
+            h1.header_1 WELCOME
+            h2.header_2 This is the Header
+        block main    
+            section.main_section
+                each movie in movies
+                    a.card(href=`/tour/${movie._id}`)
+                        .main_card 
+                            .card_header 
+                                p #{movie.name}
+                            section.card_body 
+                                p Length : #{movie.length}    
+                                p Rating : #{movie.rating}
+                            .card_footer 
+                                p GENRE  
+        #footer(data-abc="Footer data") 
+            p FOOTER _END     
+    block script
+         
+               
+            
+        
+            
